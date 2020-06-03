@@ -1,0 +1,3 @@
+#!/bin/sh
+ellip="..."
+cat | sed -E "s/(.{${1-15}}).*$/\1${ellip}/"

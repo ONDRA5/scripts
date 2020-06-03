@@ -1,0 +1,9 @@
+#!/bin/env bash
+
+song=$(playerctl metadata --format "{{ title }}" 2>&1)
+
+if [[ $? = 0 ]]; then
+    echo " ▶ ${song} "| shorten-wip
+else
+    echo " ⏸️ "
+fi

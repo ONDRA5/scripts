@@ -1,0 +1,4 @@
+#!/bin/sh
+wifi="$(cat /sys/class/net/w*/operstate)"
+eth="$(cat /sys/class/net/e*/operstate)"
+echo -e " 直 $wifi | 🌐 $eth "

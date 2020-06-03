@@ -1,0 +1,3 @@
+#!/bin/sh
+dir="$(pwd)"
+cp /home/ondra/tex/example.tex $dir

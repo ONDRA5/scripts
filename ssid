@@ -1,0 +1,3 @@
+#!/bin/sh
+ssid="$(nmcli connection show | grep wlan0)"
+echo "${ssid%% *}"

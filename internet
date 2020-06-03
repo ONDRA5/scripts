@@ -1,0 +1,10 @@
+#!/bin/sh
+wifi="$(cat /sys/class/net/w*/operstate)"
+eth="$(cat /sys/class/net/e*/operstate)"
+ssid="$(nmcli connection show | grep wlan0)"
+
+if [[ "$wifi" = "up" ]]; then
+	echo -e " 直 ${ssid%% *} | 🌐 $eth "
+else 
+echo -e " 直 $wifi | 🌐 $eth "
+fi
