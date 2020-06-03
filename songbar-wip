@@ -1,8 +1,0 @@
-#!/bin/env bash
-song="$(playerctl metadata --format "▶ {{ title }}" 2>&1)"
-until [[ $? = 0 ]]
-	do
-		sleep 3s && songbar 
-	done
-
-echo " ${song}" | shorten-wip
