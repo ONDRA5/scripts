@@ -1,8 +1,4 @@
 #! /bin/bash
-
-case $BLOCK_BUTTON in
-	1) setsid st -e htop & ;;
-esac
 read cpu a b c previdle rest </proc/stat
 prevtotal=$((a+b+c+previdle))
 sleep 0.5
