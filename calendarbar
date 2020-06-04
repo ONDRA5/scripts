@@ -1,5 +1,5 @@
 #!/bin/bash
-events="$(calcurse -a | wc -l)"
+events="$(calcurse -a --format-apt " - %S -> %m\n" | wc -l)"
 final="$(($events -1))"
 if [[ "$final" != "-1" ]]; then
 echo "  $final "
