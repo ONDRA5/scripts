@@ -1,0 +1,6 @@
+#!/bin/bash
+events="$(calcurse -a | wc -l)"
+final="$(($events -1))"
+if [[ "$final" != "-1" ]]; then
+echo "  $final "
+fi
