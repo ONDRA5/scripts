@@ -4,5 +4,5 @@ PERCENTAGE=$(upower -i $(upower -e | grep 'BAT') | grep -E "state|to\ full|perce
 case $STATE in
 	fully-charged) echo "   $PERCENTAGE " ;;
 	discharging) echo "   $PERCENTAGE " ;;
-	charging) echo "   $PERCENTAGE " ;;
+	charging) echo "    $PERCENTAGE " ;;
 esac
