@@ -1,8 +1,23 @@
 #!/bin/sh
-STATE=$(upower -i $(upower -e | grep 'BAT') | grep -E "state|to\ full|percentage" | awk -F':' '{print $2}' | sed 's/ //g' | head -n 1)
-PERCENTAGE=$(upower -i $(upower -e | grep 'BAT') | grep -E "state|to\ full|percentage" | awk -F':' '{print $2}' | sed 's/ //g' | tail -n 1)
-case $STATE in
-	fully-charged) echo "   $PERCENTAGE " ;;
-	discharging) echo "   $PERCENTAGE " ;;
-	charging) echo "    $PERCENTAGE " ;;
-esac
+bat="$(cat /sys/class/power_supply/BAT?/capacity)"
+	status="$(cat /sys/class/power_supply/BAT?/status)"
+	if [ "$status" = "Charging" ]; then
+		ico=""
+	else
+		if [ "$bat" -lt 15 ]; then
+			ico=" "
+		elif [ "$bat" -lt 30 ]; then
+			ico=" "
+		elif [ "$bat" -lt 45 ]; then
+			ico=" "
+		elif [ "$bat" -lt 60 ]; then
+			ico=" "
+		elif [ "$bat" -lt 75 ]; then
+			ico=" "
+		elif [ "$bat" -lt 90 ]; then
+			ico=" "
+		elif [ "$bat" -le 100 ]; then
+			ico=" "
+		fi
+	fi
+	echo " $ico $bat% "

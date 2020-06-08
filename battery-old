@@ -1,0 +1,8 @@
+#!/bin/sh
+STATE=$(upower -i $(upower -e | grep 'BAT') | grep -E "state|to\ full|percentage" | awk -F':' '{print $2}' | sed 's/ //g' | head -n 1)
+PERCENTAGE=$(upower -i $(upower -e | grep 'BAT') | grep -E "state|to\ full|percentage" | awk -F':' '{print $2}' | sed 's/ //g' | tail -n 1)
+case $STATE in
+	fully-charged) echo "   $PERCENTAGE " ;;
+	discharging) echo "   $PERCENTAGE " ;;
+	charging) echo "    $PERCENTAGE " ;;
+esac
