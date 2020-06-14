@@ -1,4 +1,4 @@
 #! /bin/bash
 
 dte="$(date +"%a %b %d %H:%M" | sed 's/  / /g')"
-echo -e " 🕑 $dte"
+echo -e "  $dte"
