@@ -1,0 +1,43 @@
+#!/bin/sh
+time="$(date -u +"%Y%m%d%H"00)"
+# 2 hours back
+t0="$(($time -200))"
+t1="$(($time -200 +10))"
+t2="$(($time -200 +20))"
+t3="$(($time -200 +30))"
+t4="$(($time -200 +40))"
+t5="$(($time -200 +50))"
+# one hour back
+t6="$(($time -100))"
+t7="$(($time -100 +10))"
+t8="$(($time -100 +20))"
+t9="$(($time -100 +30))"
+t10="$(($time -100 +40))"
+t11="$(($time -100 +50))"
+# current hour
+t12="$($time)"
+t13="$(($time +10))"
+t14="$(($time +20))"
+t15="$(($time +30))"
+t16="$(($time +40))"
+t17="$(($time +50))"
+notify-send "Downloading weather data"
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t0.png -O $HOME/.local/share/weatherradar/a.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t1.png -O $HOME/.local/share/weatherradar/b.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t2.png -O $HOME/.local/share/weatherradar/c.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t3.png -O $HOME/.local/share/weatherradar/d.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t4.png -O $HOME/.local/share/weatherradar/e.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t5.png -O $HOME/.local/share/weatherradar/f.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t6.png -O $HOME/.local/share/weatherradar/g.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t7.png -O $HOME/.local/share/weatherradar/h.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t8.png -O $HOME/.local/share/weatherradar/i.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t9.png -O $HOME/.local/share/weatherradar/j.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t10.png -O $HOME/.local/share/weatherradar/k.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t11.png -O $HOME/.local/share/weatherradar/l.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t12.png -O $HOME/.local/share/weatherradar/m.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t13.png -O $HOME/.local/share/weatherradar/n.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t14.png -O $HOME/.local/share/weatherradar/o.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t15.png -O $HOME/.local/share/weatherradar/p.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t16.png -O $HOME/.local/share/weatherradar/q.png
+wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t17.png -O $HOME/.local/share/weatherradar/r.png
+sxiv -S .3 $HOME/.local/share/weatherradar/*
