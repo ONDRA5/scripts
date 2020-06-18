@@ -40,4 +40,4 @@ wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t14.png -O $HOME/.local/share/we
 wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t15.png -O $HOME/.local/share/weatherradar/p.png
 wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t16.png -O $HOME/.local/share/weatherradar/q.png
 wget http://hydro.chmi.cz/hpps/tmp/img/srz/r_1_$t17.png -O $HOME/.local/share/weatherradar/r.png
-sxiv -S .3 $HOME/.local/share/weatherradar/*
+sxiv -b -S .3 $HOME/.local/share/weatherradar/*
