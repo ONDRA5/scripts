@@ -1,0 +1,3 @@
+#!/bin/sh
+choice=$(dmenu -i -p DuckDuckGo:)
+$BROWSER $choice
