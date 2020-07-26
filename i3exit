@@ -6,7 +6,7 @@
 
 case "$1" in
     lock)
-        blurlock
+        betterlockscreen --lock blur
         ;;
     logout)
         killall *
@@ -15,7 +15,7 @@ case "$1" in
         dm-tool switch-to-greeter
         ;;
     suspend)
-        blurlock && $logind suspend
+        $logind suspend && betterlockscreen --lock blur
         ;;
     hibernate)
         blurlock && $logind hibernate
