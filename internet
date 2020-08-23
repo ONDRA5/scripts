@@ -1,10 +1,15 @@
 #!/bin/sh
-wifi="$(cat /sys/class/net/w*/operstate)"
-eth="$(cat /sys/class/net/e*/operstate)"
-ssid="$(nmcli connection show | grep wlp3s0)"
+wifi="$(cat /sys/class/net/w*/operstate)" #this is universal, it should work anywhere
+eth="$(cat /sys/class/net/enp2s0/operstate)" #replace with your actual device name
+usb="$(cat /sys/class/net/enp4s0f3u2u3/operstate)" #this is for ethernet->usb, replace with your device name
+ssid="$(nmcli connection show | grep wlp*)"
 
-if [[ "$wifi" = "up" ]]; then
-	echo -e " 直 ${ssid%% *} |  $eth "
+if [ "$wifi" = "up" ] && [ "$eth" = "down" ] && [ "$usb" = "down" ]; then
+	echo -e " 直 ${ssid%% *}"
+elif [ "$wifi" = "down" ] && [ "$eth" = "up" ] && [ "$usb" = "down" ]; then
+	echo -e "  $eth"
+elif [ "$wifi" = "down" ] && [ "$eth" = "down" ] && [ "$usb" = "up" ]; then
+	echo -e "   $usb "
 else 
-echo -e " 直 $wifi |  $eth "
+echo -e " 直 $wifi |  $eth |   $usb"
 fi
