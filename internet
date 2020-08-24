@@ -1,7 +1,7 @@
 #!/bin/sh
 wifi="$(cat /sys/class/net/w*/operstate)" #this is universal, it should work anywhere
 eth="$(cat /sys/class/net/enp2s0/operstate)" #replace with your actual device name
-usb="$(cat /sys/class/net/enp4s0f3u2u3/operstate)" #this is for ethernet->usb, replace with your device name
+usb="$(cat /sys/class/net/enp4s0f3u2u4/operstate)" #this is for ethernet->usb, replace with your device name
 ssid="$(nmcli connection show | grep wlp*)"
 
 if [ "$wifi" = "up" ] && [ "$eth" = "down" ] && [ "$usb" = "down" ]; then
@@ -13,5 +13,5 @@ elif [ "$wifi" = "down" ] && [ "$eth" = "down" ] && [ "$usb" = "up" ]; then
 elif [ "$wifi" = "down" ] && [ "$eth" = "down" ] && [ "$usb" = "down" ]; then
 	echo -e "  No Connection "
 else 
-echo -e "   $wifi |  $eth |   $usb "
+echo -e "   ${ssid%% *} |  $eth |   $usb "
 fi
