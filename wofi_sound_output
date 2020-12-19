@@ -5,7 +5,6 @@ declare -A output=(
 ["Speakers"]="Speakers"
 )
 choice=$(printf "%s\n" "${!output[@]}" | wofi --show=dmenu -p "sound output")
-echo "$choice"
 
 if
   [[ "$choice" == "Speakers" ]]; then
@@ -14,8 +13,6 @@ elif
   [[ "$choice" == "HDMI" ]]; then
   newSink="alsa_output.pci-0000_05_00.1.hdmi-stereo-extra1"
 fi
-
-echo "$newSink"
 
 pactl list short sink-inputs|while read stream; do
     streamId=$(echo $stream|cut '-d ' -f1)
