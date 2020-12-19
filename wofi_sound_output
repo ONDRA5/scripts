@@ -1,0 +1,26 @@
+#!/bin/bash
+
+declare -A output=(
+["HDMI"]="HDMI"
+["Speakers"]="Speakers"
+)
+choice=$(printf "%s\n" "${!output[@]}" | wofi --show=dmenu -p "sound output")
+echo "$choice"
+
+if
+  [[ "$choice" == "Speakers" ]]; then
+  newSink="alsa_output.pci-0000_05_00.6.analog-stereo"
+elif
+  [[ "$choice" == "HDMI" ]]; then
+  newSink="alsa_output.pci-0000_05_00.1.hdmi-stereo-extra1"
+fi
+
+echo "$newSink"
+
+pactl list short sink-inputs|while read stream; do
+    streamId=$(echo $stream|cut '-d ' -f1)
+    echo "moving stream $streamId"
+    pactl move-sink-input "$streamId" "$newSink"
+    pactl set-default-sink "$newSink"
+    echo "$newSink"
+done

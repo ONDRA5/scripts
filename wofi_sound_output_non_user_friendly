@@ -1,0 +1,8 @@
+#!/bin/bash
+declare -A output=(
+["HDMI"]="1"
+["Speakers"]="3"
+)
+choice=$(printf "%s\n" "${!output[@]}" | wofi --show=dmenu -p "sound output")
+sound_output "$choice"
+echo "$choice"
